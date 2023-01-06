@@ -1,0 +1,46 @@
+@model IEnumerable<ExamRegistration.Models.Subject>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Danh sách các học phần</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Thêm mới Học phần</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SubjectCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubjectName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SubjectID">Sửa</a> |
+                <a asp-action="Delete" asp-route-id="@item.SubjectID">Xoá</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
